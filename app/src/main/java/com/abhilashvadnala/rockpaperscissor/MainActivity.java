@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
@@ -278,7 +279,9 @@ public class MainActivity extends AppCompatActivity {
                 result = Double.valueOf(v1) + Double.valueOf(v2);
                 break;
             case DIFF:
-                result = Double.valueOf(v1) - Double.valueOf(v2);
+                BigDecimal b1 = new BigDecimal(v1);
+                BigDecimal b2 = new BigDecimal(v2);
+                result = (b1.subtract(b2)).doubleValue();
                 break;
             case DIV:
                 if(Double.valueOf(v2) == 0) {
@@ -287,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
                 if(v2.equals("")){
                     result = 1;
                 }
-                result = Double.valueOf(v1) / Double.valueOf(v2);
+                result = (Double.valueOf(v1) / Double.valueOf(v2));
                 break;
             case MUL:
                 result = Double.valueOf(v1) * Double.valueOf(v2);
